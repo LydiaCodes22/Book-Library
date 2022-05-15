@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+
 const express = require('express');
+//const readerRouter = require('./routes/reader');
 
 const app = express();
-// const cors = require('cors');
-
-// app.use(cors());
 
 app.use(express.json());
 
+// app.use('/readers',
+//     //readerRouter
+// );
 
 module.exports = app;

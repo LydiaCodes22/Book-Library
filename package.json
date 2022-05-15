@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "prestart": "node scripts/create-database.js",
+    "start": "nodemon -r dotenv/config index.js",
+    "pretest": "node scripts/create-database.js test",
+    "test": "mocha tests/**/*.test.js",
+    "posttest": "node scripts/drop-database.js"
   },
   "repository": {
     "type": "git",
@@ -18,12 +21,16 @@
   },
   "homepage": "https://github.com/LydiaCodes22/Book-Library#readme",
   "dependencies": {
+    "chai": "^4.3.6",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "install": "^0.13.0",
+    "mocha": "^10.0.0",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.16",
-    "npm": "^8.10.0"
+    "npm": "^8.10.0",
+    "sequelize": "^6.19.0",
+    "supertest": "^6.2.3"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.23.0",

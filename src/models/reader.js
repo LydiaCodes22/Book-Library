@@ -8,4 +8,4 @@ module.exports = (connection, DataTypes) => {
 
     const ReaderModel = connection.define('Reader', schema);
     return ReaderModel;
-}; 
+};

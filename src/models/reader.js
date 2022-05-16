@@ -1,3 +1,5 @@
+const { Sequelize } = require("sequelize");
+
 module.exports = (connection, DataTypes) => {
     const schema = {
         name: DataTypes.STRING,
@@ -6,4 +8,4 @@ module.exports = (connection, DataTypes) => {
 
     const ReaderModel = connection.define('Reader', schema);
     return ReaderModel;
-};
+}; 

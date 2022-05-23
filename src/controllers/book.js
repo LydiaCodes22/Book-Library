@@ -55,7 +55,6 @@ exports.delete = async (req, res) => {
     try {
         const target = req.params.id
         const deletedBook = await Book.destroy({ where: { id: target }, })
-        console.log(deletedBook)
         if (deletedBook != 0) {
             res.status(204).send(`The book has been deleted`)
         }

@@ -3,6 +3,8 @@ const request = require('supertest');
 const { Book } = require('../src/models');
 const app = require('../src/app');
 
+//Could a test be added to assert what would happen if the book name or genre etcwas left blank in the request?
+
 
 describe('/books', () => {
     before(async () => Book.sequelize.sync());
@@ -33,6 +35,7 @@ describe('/books', () => {
                 expect(newBookRecord.genre).to.equal('Fact');
                 expect(newBookRecord.ISBN).to.equal('123');
             })
+
         })
     })
 

@@ -26,6 +26,11 @@ describe('/readers', () => {
 				expect(newReaderRecord.name).to.equal('Elizabeth Bennet');
 				expect(newReaderRecord.email).to.equal('future_ms_darcy@gmail.com');
 			});
+			it('throws an error if the name field is empty')
+			it('throws an error if the email field is empty')
+			it('throws an error if the email provided is not valid')
+			it('throws an error if the password field is empty')
+			it('throws an error if the password is shorter then 8 characters')
 		});
 	});
 

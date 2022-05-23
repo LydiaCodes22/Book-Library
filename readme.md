@@ -1,3 +1,5 @@
+// What should the .env file contain? How is the project setup? What scripts do I need to run?
+
 ## Introduction & Usage
 This is an API which manages requests to a database with reader and book data for a simple book Library.
 

@@ -5,7 +5,7 @@ exports.create = async (req, res) => {
         const newReader = await Reader.create(req.body);
         res.status(201).json(newReader);
     } catch (err) {
-        res.sendStatus(500).json(err);
+        res.status(500).json(err.message);
     };
 }
 
@@ -14,7 +14,8 @@ exports.read = async (req, res) => {
         const result = await Reader.findAll()
         res.status(200).json(result)
     } catch (err) {
-        res.sendStatus(500).json(err);
+        console.log(err)
+        res.status(500).json(err.message);
     };
 }
 
@@ -26,7 +27,7 @@ exports.readById = async (req, res) => {
             res.status(404).send({ 'error': 'The reader could not be found.' })
         }
     } catch (err) {
-        res.sendStatus(500).json(err);
+        res.status(500).json(err.message);
     };
 }
 
@@ -42,7 +43,7 @@ exports.update = async (req, res) => {
             res.status(404).send({ 'error': 'The reader could not be found.' })
         }
     } catch (err) {
-        res.sendStatus(500).json(err);
+        res.status(500).json(err.message);;
     }
 };
 
@@ -57,7 +58,7 @@ exports.delete = async (req, res) => {
             res.status(404).send({ 'error': 'The reader could not be found.' })
         }
     } catch (err) {
-        res.sendStatus(500).json(err);
+        res.status(500).json(err.message);;
     }
 }
 

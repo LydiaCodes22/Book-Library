@@ -4,12 +4,6 @@ const { Book } = require('../src/models');
 const app = require('../src/app');
 
 
-//assertions:
-//create - a book is added to our database with a title, an author, a genre and an ISBN. then we check that the title and author exists.
-//read - you can retrieve all records with get, or retrieve one record by its id. it will give you 404 & a message if the book doesn't exist. maybe it would also be good to search by other fields.
-//update - you can update a record by id and it gives a 404 if it doesn't exist
-// delete - you can delete a record by id and it gives 404 if it doesn't exist.
-
 describe('/books', () => {
     before(async () => Book.sequelize.sync());
 
@@ -104,10 +98,43 @@ describe('/books', () => {
             })
         })
         describe('PATCH /books/:id', () => {
+            it('updates a field on a record with the given id', async () => {
+                const book = books[0]
+                const response = await request(app).patch(`/books/${book.id}`)
+                    .send({ ISBN: '000' });
+                const updatedBookRecord = await Book.findByPk(book.id, {
+                    raw: true,
+                });
+
+                expect(response.status).to.equal(200);
+                expect(updatedBookRecord.ISBN).to.equal('000');
+
+            })
+            it('returns a 404 if the reader does not exist', async () => {
+                const response = await request(app)
+                    .patch('/books/900000')
+                    .send({ ISBN: '000' });
+
+                expect(response.status).to.equal(404);
+                expect(response.body.error).to.equal('No such book in the database');
+            });
 
         })
         describe('DELETE /books/:id', () => {
+            it('deletes reader record by id', async () => {
+                const book = books[0];
+                const response = await request(app).delete(`/books/${book.id}`);
+                const deletedBook = await Book.findByPk(book.id, { raw: true });
 
-        })
-    })
+                expect(response.status).to.equal(204);
+                expect(deletedBook).to.equal(null);
+            });
+
+            it('returns a 404 if the reader does not exist', async () => {
+                const response = await request(app).delete('/books/123450000');
+                expect(response.status).to.equal(404);
+                expect(response.body.error).to.equal('No such book in the database');
+            });
+        });
+    });
 })

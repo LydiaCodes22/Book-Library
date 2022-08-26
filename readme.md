@@ -10,7 +10,7 @@ node.js \
 Postman \
 Swagger \
 Docker \
-Chai, Mocha, SuperTest \
+Chai, Mocha, SuperTest 
 
 ## Project set up
 This project can be forked and then cloned from git, then the npm packages installed with 'npm install'. \
@@ -23,7 +23,7 @@ DB_NAME= \
 DB_USER= \
 DB_HOST= \
 DB_PORT= \
-PORT= \
+PORT= 
 
 ## Contributing
 You are free to clone this repository to work with it yourself, but please open an issue before making changes to the original.

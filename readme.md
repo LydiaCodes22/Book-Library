@@ -13,7 +13,7 @@ Docker \
 Chai, Mocha, SuperTest 
 
 ## Project set up
-This project can be forked and then cloned from git, then the npm packages installed with 'npm install'. \
+You will need to have a Docker contained running MySQL on your machine. This project can be forked and then cloned from git, then the npm packages installed with 'npm install'. \
 Following this you will need to run 'npm start'
 
 ## .env setup
